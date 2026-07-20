@@ -1,20 +1,51 @@
-.git
-.gitignore
-.dockerignore
-Dockerfile
-Dockerfile.dev
-docker-compose.yml
-README.md
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
 
-# Rails 生成物・一時ファイル
-/tmp/*
-!/tmp/pids/
-/log/*
-/storage/*
-node_modules/
+# Ignore git directory.
+/.git/
+/.gitignore
+
+# Ignore bundler config.
 /.bundle
-vendor/bundle
 
-# エディタ・OS
-.DS_Store
-*.swp
+# Ignore all environment files.
+/.env*
+
+# Ignore all default key files.
+/config/master.key
+/config/credentials/*.key
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/.keep
+
+# Ignore assets.
+/node_modules/
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/public/assets
+
+# Ignore CI service files.
+/.github
+
+# Ignore Kamal files.
+/config/deploy*.yml
+/.kamal
+
+# Ignore development files
+/.devcontainer
+
+# Ignore Docker-related files
+/.dockerignore
+/Dockerfile*
