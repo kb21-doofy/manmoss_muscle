@@ -21,10 +21,10 @@
 
 ## 1. プロジェクト初期セットアップ
 
-- [ ] 1.1 Ruby / Rails のバージョンを決定し `.ruby-version` を用意する
-- [ ] 1.2 `rails new` で MySQL 指定(`-d mysql`)のアプリを生成する(既存 `README.md` / `.gitignore` は維持)
+- [x] 1.1 Ruby / Rails のバージョンを決定し `.ruby-version` を用意する(Ruby 3.4.10 / Rails 8.1.3)
+- [x] 1.2 `rails new` で MySQL 指定(`-d mysql`)のアプリを生成する(既存 `README.md` / `.gitignore` は維持)
 - [ ] 1.3 `Gemfile` の整理(不要 gem の削除、必要 gem の追加)
-- [ ] 1.4 `bundle install` と初期動作確認(`rails server` で起動確認)
+- [x] 1.4 `bundle install` と初期動作確認(`rails server` で起動確認)
 - [ ] 1.5 `config/database.yml` を MySQL 向けに設定し `rails db:create` を実行する
 
 ## 1'. Docker 環境の構築
