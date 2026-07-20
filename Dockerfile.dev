@@ -1,0 +1,34 @@
+FROM ruby:3.4-slim
+
+# 必要なパッケージのインストール
+#  - build-essential: gem のネイティブ拡張ビルド用
+#  - default-libmysqlclient-dev / pkg-config: mysql2 gem のビルド用
+#  - default-mysql-client: rails db 系タスクや mysql コマンド用
+#  - git / curl: 各種ツール・依存取得用
+RUN apt-get update -qq \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        default-libmysqlclient-dev \
+        default-mysql-client \
+        pkg-config \
+        git \
+        curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# 先に Gemfile 群だけコピーして bundle install（レイヤキャッシュを効かせる）
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# アプリ本体をコピー
+COPY . .
+
+# server.pid が残っているとサーバが起動できないため削除するエントリポイント
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+
+EXPOSE 3000
+
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]

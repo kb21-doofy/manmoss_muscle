@@ -29,13 +29,16 @@
 
 ## 1'. Docker 環境の構築
 
-- [ ] 1'.1 アプリ用の `Dockerfile` を作成する(Ruby ベースイメージ、依存インストール)
-- [ ] 1'.2 `docker-compose.yml` を作成する(app / db(MySQL)サービスの定義)
-- [ ] 1'.3 DB データ永続化用の volume と環境変数(接続情報)を設定する
-- [ ] 1'.4 `config/database.yml` を Docker の DB サービスに合わせて設定する
-- [ ] 1'.5 `docker compose build` / `docker compose up` で起動確認する
-- [ ] 1'.6 `docker compose run` 経由で `rails db:create` / `db:migrate` が実行できることを確認する
-- [ ] 1'.7 `.dockerignore` を用意する
+- 開発用 Dockerfile は `Dockerfile.dev` という名前で管理する(`rails new` が生成する本番用 `Dockerfile` と共存させるため)。
+  `docker-compose.yml` の `web.build.dockerfile` で `Dockerfile.dev` を明示的に指定している。
+
+- [x] 1'.1 アプリ用の `Dockerfile.dev` を作成する(Ruby ベースイメージ、依存インストール)
+- [x] 1'.2 `docker-compose.yml` を作成する(app / db(MySQL)サービスの定義)
+- [x] 1'.3 DB データ永続化用の volume と環境変数(接続情報)を設定する
+- [ ] 1'.4 `config/database.yml` を Docker の DB サービスに合わせて設定する(`rails new` 実行後)
+- [x] 1'.5 `docker compose build` で起動確認する(Ruby / Rails / MySQL クライアントのインストールを確認済み)
+- [ ] 1'.6 `docker compose run` 経由で `rails db:create` / `db:migrate` が実行できることを確認する(`rails new` 実行後)
+- [x] 1'.7 `.dockerignore` を用意する
 
 ## 2. データモデル設計
 

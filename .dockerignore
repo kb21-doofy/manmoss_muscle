@@ -1,0 +1,20 @@
+.git
+.gitignore
+.dockerignore
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+README.md
+
+# Rails 生成物・一時ファイル
+/tmp/*
+!/tmp/pids/
+/log/*
+/storage/*
+node_modules/
+/.bundle
+vendor/bundle
+
+# エディタ・OS
+.DS_Store
+*.swp
