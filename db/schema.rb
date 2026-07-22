@@ -10,5 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 0) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_21_141711) do
+  create_table "menus", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "body_part"
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workout_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "menu_id", null: false
+    t.integer "reps"
+    t.integer "sets"
+    t.datetime "updated_at", null: false
+    t.decimal "weight", precision: 10
+    t.bigint "workout_id", null: false
+    t.index ["menu_id"], name: "index_workout_records_on_menu_id"
+    t.index ["workout_id"], name: "index_workout_records_on_workout_id"
+  end
+
+  create_table "workouts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.date "date"
+    t.text "memo"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_workouts_on_user_id"
+  end
+
+  add_foreign_key "workout_records", "menus"
+  add_foreign_key "workout_records", "workouts"
+  add_foreign_key "workouts", "users"
 end

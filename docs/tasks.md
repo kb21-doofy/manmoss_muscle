@@ -35,18 +35,22 @@
 - [x] 1'.1 アプリ用の `Dockerfile.dev` を作成する(Ruby ベースイメージ、依存インストール)
 - [x] 1'.2 `docker-compose.yml` を作成する(app / db(MySQL)サービスの定義)
 - [x] 1'.3 DB データ永続化用の volume と環境変数(接続情報)を設定する
-- [ ] 1'.4 `config/database.yml` を Docker の DB サービスに合わせて設定する(`rails new` 実行後)
+- [x] 1'.4 `config/database.yml` を Docker の DB サービスに合わせて設定する(`DATABASE_HOST` / `DATABASE_USER` / `DATABASE_PASSWORD` を参照するよう修正)
 - [x] 1'.5 `docker compose build` で起動確認する(Ruby / Rails / MySQL クライアントのインストールを確認済み)
-- [ ] 1'.6 `docker compose run` 経由で `rails db:create` / `db:migrate` が実行できることを確認する(`rails new` 実行後)
+- [x] 1'.6 `docker compose run` 経由で `rails db:create` / `db:migrate` が実行できることを確認する
 - [x] 1'.7 `.dockerignore` を用意する
 
 ## 2. データモデル設計
 
-- [ ] 2.1 ユーザー(User)テーブルの設計(メールアドレス・パスワード等、Devise の想定カラム)
-- [ ] 2.2 種目(Exercise)テーブルの設計(名前、部位など)
-- [ ] 2.3 トレーニング記録(WorkoutLog)テーブルの設計(ユーザー・種目・重量・回数・セット数・実施日)
-- [ ] 2.4 User / Exercise / WorkoutLog のマイグレーション作成と `rails db:migrate`
-- [ ] 2.5 モデル定義(アソシエーション、バリデーション。WorkoutLog は User に属する)
+- 実際のテーブル構成は [data_model.md](data_model.md) の設計に合わせて `users` / `menus` / `workouts` / `workout_records` の4テーブルとした
+  (当初案の Exercise / WorkoutLog という名称から変更。詳細は data_model.md 参照)。
+
+- [x] 2.1 ユーザー(User)テーブルの設計(name・email・password_digest)
+- [x] 2.2 種目(menus)テーブルの設計(name・body_part)
+- [x] 2.3 トレーニング(workouts)・トレーニング記録(workout_records)テーブルの設計
+      (workouts: user・date・memo / workout_records: workout・menu・weight・reps・sets)
+- [x] 2.4 User / Menu / Workout / WorkoutRecord のマイグレーション作成と `rails db:migrate`
+- [x] 2.5 モデル定義(`rails generate model` で生成。アソシエーション・バリデーションは今後追記)
 
 ## 2'. ユーザー登録・認証機能
 
