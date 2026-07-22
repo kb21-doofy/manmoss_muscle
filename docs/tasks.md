@@ -50,7 +50,11 @@
 - [x] 2.3 トレーニング(workouts)・トレーニング記録(workout_records)テーブルの設計
       (workouts: user・date・memo / workout_records: workout・menu・weight・reps・sets)
 - [x] 2.4 User / Menu / Workout / WorkoutRecord のマイグレーション作成と `rails db:migrate`
-- [x] 2.5 モデル定義(`rails generate model` で生成。アソシエーション・バリデーションは今後追記)
+- [x] 2.5 モデル定義(アソシエーション定義済み。バリデーションは今後追記)
+      - User: `has_many :workouts, dependent: :destroy`
+      - Menu: `has_many :workout_records`
+      - Workout: `belongs_to :user` / `has_many :workout_records, dependent: :destroy`
+      - WorkoutRecord: `belongs_to :workout` / `belongs_to :menu`
 
 ## 2'. ユーザー登録・認証機能
 
