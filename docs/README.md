@@ -27,6 +27,17 @@ docker compose run --rm --no-deps web bash
 `web` コンテナ内で対話的にシェルを操作したいとき(gem のバージョン確認、`rails` コマンドの試し実行など)に使います。
 `exit` で抜けるとコンテナは自動削除されます。
 
-> **現状の制約(2026-07-20 時点)**: `rails new` をまだ実行していないため、アプリ本体(`bin/rails` 等)が
-> 存在しません。そのため `docker compose up`(`web` サービスのメインコマンド `bin/rails server` の起動)は
-> まだ失敗します。`db` サービス単体の起動や `rails new` の実行手順は、実装が進み次第このセクションに追記します。
+### サーバーの起動
+
+```bash
+docker compose up web
+```
+
+`web`(Rails)と `db`(MySQL、`depends_on` により自動起動)を立ち上げます。
+`http://localhost:3000` でアクセスできます。バックグラウンドで動かしたい場合は `docker compose up -d web`。
+
+停止する場合:
+
+```bash
+docker compose down
+```
