@@ -58,13 +58,15 @@
 
 ## 2'. ユーザー登録・認証機能
 
-- [ ] 2'.1 認証用 gem(Devise)の導入と初期設定(`rails generate devise:install`)
-- [ ] 2'.2 User モデルの生成(`rails generate devise User`)とマイグレーション
-- [ ] 2'.3 ユーザー登録(サインアップ)画面・フローの実装
-- [ ] 2'.4 ログイン / ログアウト機能の実装
-- [ ] 2'.5 未ログイン時のアクセス制御(`before_action :authenticate_user!`)
+- [x] 2'.1 認証用 gem(Devise)の導入と初期設定(`rails generate devise:install`)
+- [x] 2'.2 User モデルの生成(`rails generate devise User`)とマイグレーション
+- [x] 2'.3 ユーザー登録(サインアップ)画面・フローの実装(`rails generate devise:views` によるデフォルト画面)
+- [x] 2'.4 ログイン / ログアウト機能の実装(Devise 標準のセッション機能)
+- [x] 2'.5 未ログイン時のアクセス制御(`before_action :authenticate_user!`、Devise 自身の画面は `devise_controller?` で除外)
+- [x] 2'.5' `HomeController#index` を作成し `root "home#index"` に設定(rails デフォルト画面を廃止)。トップページ自体は `skip_before_action :authenticate_user!, only: :index` で未ログインでも閲覧可能にする
 - [ ] 2'.6 ログインユーザーに紐づく記録のみを操作できるようにする(認可)
 - [ ] 2'.7 サインアップ / ログイン画面の最低限のスタイリング
+- [ ] 2'.8 トレーニング記録関連の機能(3系・4系のコントローラー)は、個別に `authenticate_user!` が効いた状態(= 未ログインだとアクセス不可)であることを確認する
 
 ## 3. トレーニング記録機能(登録)
 

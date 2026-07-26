@@ -1,0 +1,10 @@
+<h1>manmoss_muscle</h1>
+
+<% if user_signed_in? %>
+  <p>ログイン中: <%= current_user.email %></p>
+<% else %>
+  <p>
+    <%= link_to "ログイン", new_user_session_path %> /
+    <%= link_to "新規登録", new_user_registration_path %>
+  </p>
+<% end %>
