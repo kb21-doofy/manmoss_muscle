@@ -121,6 +121,7 @@ GEM
     et-orbi (1.4.0)
       tzinfo
     ffi (1.17.4-aarch64-linux-gnu)
+    ffi (1.17.4-x86_64-linux-gnu)
     fugit (1.13.0)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -195,6 +196,8 @@ GEM
     net-ssh (7.3.3)
     nio4r (2.7.5)
     nokogiri (1.19.4-aarch64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
@@ -303,9 +306,9 @@ GEM
     ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
-    rubyzip (3.4.1)
+    rubyzip (3.5.0)
     securerandom (0.4.1)
-    selenium-webdriver (4.46.0)
+    selenium-webdriver (4.48.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -338,6 +341,7 @@ GEM
       railties (>= 6.0.0)
     thor (1.5.0)
     thruster (0.1.23-aarch64-linux)
+    thruster (0.1.23-x86_64-linux)
     timeout (0.6.1)
     tsort (0.2.0)
     turbo-rails (2.0.23)
@@ -367,6 +371,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
